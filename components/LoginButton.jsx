@@ -26,6 +26,6 @@ export default () => {
 		await authClient.signOut();
 	}
 
-	if (loggedIn) return <button onClick={triggerLogin}>Login</button>;
+	if (loggedIn) return <button onClick={triggerLogin}>Login via Google</button>;
 	else return <button onClick={triggerLogout}>Logout</button>;
 };

@@ -27,7 +27,7 @@ export default () => {
 				author: userId,
 				text,
 			});
-		} else alert("you're bad, login plz");
+		} else alert("Please log in to log questions.");
 	}
 
 	return (
