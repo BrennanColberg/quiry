@@ -1,0 +1,10 @@
+.form {
+	display: inline-block;
+}
+
+.form > * {
+	font-size: 30pt;
+	margin: 0;
+	padding: 5px 10px;
+	height: 100%;
+}
