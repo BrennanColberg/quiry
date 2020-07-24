@@ -6,9 +6,9 @@ import LoginButton from "../components/LoginButton";
 export default function Home() {
 	return (
 		<main className={styles.main}>
-			<LoginButton />
 			<QuestionForm />
 			<QuestionHistory />
+			<LoginButton />
 		</main>
 	);
 }
