@@ -38,7 +38,6 @@ export default () => {
 				value={text}
 				onChange={(e) => setText(e.target.value)}
 			/>
-			<button>Ask!</button>
 		</form>
 	);
 };
