@@ -10,6 +10,7 @@ export default ({ question }) => {
 	async function triggerDelete() {
 		if (confirm(`Are you sure you want to delete "${question.text}"?`)) {
 			await dbClient.collection("questions").doc(question.id).delete();
+			analyticsClient.logEvent("delete_question");
 		}
 	}
 

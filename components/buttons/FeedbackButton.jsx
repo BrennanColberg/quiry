@@ -1,4 +1,4 @@
-import { dbClient, authClient } from "../../firebase";
+import { dbClient, authClient, analyticsClient } from "../../firebase";
 import { firestore } from "firebase/app";
 import { useState, useEffect } from "react";
 
@@ -16,7 +16,7 @@ export default () => {
 		});
 	}, []);
 
-	function triggerCollectFeedback() {
+	async function triggerCollectFeedback() {
 		const data = {};
 		data.feedback = prompt("What is your feedback?");
 		data.name = prompt("What is your name?");
@@ -27,7 +27,8 @@ export default () => {
 		if (Object.keys(data).length > 0) {
 			if (userId) data.userId = userId;
 			data.created = firestore.Timestamp.now();
-			dbClient.collection("feedback").doc().set(data);
+			await dbClient.collection("feedback").doc().set(data);
+			analyticsClient.logEvent("submit_feedback");
 		}
 	}
 

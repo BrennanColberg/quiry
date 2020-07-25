@@ -19,11 +19,13 @@ export default () => {
 			if (!userSnap.exists) {
 				await ref.set({ created: firestore.Timestamp.now() });
 			}
+			analyticsClient.logEvent("login");
 		}
 	}
 
 	async function triggerLogout() {
 		await authClient.signOut();
+		analyticsClient.logEvent("logout");
 	}
 
 	if (loggedIn) return <button onClick={triggerLogin}>Login via Google</button>;

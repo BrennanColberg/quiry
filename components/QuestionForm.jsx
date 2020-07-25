@@ -29,6 +29,7 @@ export default () => {
 			author: userId,
 			text: oldText,
 		});
+		analyticsClient.logEvent("create_question");
 	}
 
 	return (

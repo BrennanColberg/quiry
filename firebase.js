@@ -16,6 +16,7 @@ const firebaseConfig = {
 
 if (firebase.apps.length === 0) firebase.initializeApp(firebaseConfig);
 
-// export const analyticsClient = firebase.analytics();
+export const analyticsClient =
+	typeof window === "undefined" ? null : firebase.analytics();
 export const authClient = firebase.auth();
 export const dbClient = firebase.firestore();
