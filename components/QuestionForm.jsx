@@ -1,6 +1,6 @@
 import styles from "../styles/QuestionForm.module.css";
 import { useState, useEffect } from "react";
-import { dbClient, authClient } from "../firebase";
+import { dbClient, authClient, analyticsClient } from "../firebase";
 import { firestore } from "firebase/app";
 
 export default () => {

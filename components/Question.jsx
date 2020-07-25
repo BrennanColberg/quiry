@@ -1,7 +1,7 @@
 import styles from "../styles/Question.module.scss";
 import { useState } from "react";
 import classNames from "classnames";
-import { dbClient } from "../firebase";
+import { dbClient, analyticsClient } from "../firebase";
 import { isTimestampToday } from "../utils";
 
 export default ({ question }) => {

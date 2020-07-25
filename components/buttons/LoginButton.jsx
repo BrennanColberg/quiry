@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { authClient, dbClient } from "../../firebase";
+import { authClient, dbClient, analyticsClient } from "../../firebase";
 import { auth, firestore } from "firebase/app";
 
 const authProvider = new auth.GoogleAuthProvider();
