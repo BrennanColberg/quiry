@@ -1,6 +1,10 @@
 .question {
 	position: relative;
-	padding-left: 20px;
+	padding: 5px 20px;
+
+	&:not(.today) {
+		background-color: #eee;
+	}
 }
 
 .delete {
@@ -10,6 +14,8 @@
 	display: none;
 }
 
-.hovered .delete {
-	display: initial;
+.hovered {
+	.delete {
+		display: initial;
+	}
 }

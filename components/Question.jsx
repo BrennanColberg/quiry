@@ -1,15 +1,15 @@
-import styles from "../styles/Question.module.css";
-import { useState, useEffect } from "react";
+import styles from "../styles/Question.module.scss";
+import { useState } from "react";
 import classNames from "classnames";
 import { dbClient } from "../firebase";
+import { isTimestampToday } from "../utils";
 
 export default ({ question }) => {
-	const { text, created, id } = question;
 	const [hovered, setHovered] = useState(false);
 
 	async function triggerDelete() {
-		if (confirm(`Are you sure you want to delete "${text}"?`)) {
-			await dbClient.collection("questions").doc(id).delete();
+		if (confirm(`Are you sure you want to delete "${question.text}"?`)) {
+			await dbClient.collection("questions").doc(question.id).delete();
 		}
 	}
 
@@ -23,12 +23,13 @@ export default ({ question }) => {
 		<li
 			className={classNames(styles.question, {
 				[styles.hovered]: hovered,
+				[styles.today]: isTimestampToday(question.created),
 			})}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
 			<DeleteButton />
-			{text}
+			{question.text}
 		</li>
 	);
 };

@@ -20,14 +20,15 @@ export default () => {
 
 	async function triggerSubmit(event) {
 		event.preventDefault();
+		const oldText = text;
 		setText("");
-		if (userId) {
-			await dbClient.collection("questions").doc().set({
-				created: firestore.Timestamp.now(),
-				author: userId,
-				text,
-			});
-		} else alert("Please log in to log questions.");
+		if (!userId) return alert("Please log in to log questions.");
+		if (!oldText.trim()) return alert("Questions must have text!");
+		await dbClient.collection("questions").doc().set({
+			created: firestore.Timestamp.now(),
+			author: userId,
+			text: oldText,
+		});
 	}
 
 	return (
