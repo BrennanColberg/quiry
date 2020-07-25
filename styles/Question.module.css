@@ -1,0 +1,15 @@
+.question {
+	position: relative;
+	padding-left: 20px;
+}
+
+.delete {
+	cursor: pointer;
+	position: absolute;
+	left: 0;
+	display: none;
+}
+
+.hovered .delete {
+	display: initial;
+}
