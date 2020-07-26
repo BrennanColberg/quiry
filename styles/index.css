@@ -1,0 +1,13 @@
+a {
+	display: inline-block;
+	color: #555;
+	padding: 10px;
+}
+
+main {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 0;
+}

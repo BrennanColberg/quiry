@@ -1,3 +1,4 @@
+import "../styles/index.css";
 import { useEffect } from "react";
 import Head from "next/head";
 import { analyticsClient } from "../firebase";
@@ -12,7 +13,9 @@ export default ({ Component, pageProps }) => {
 			<Head>
 				<title>Quiry Logger</title>
 			</Head>
-			<Component {...pageProps} />
+			<main>
+				<Component {...pageProps} />
+			</main>
 		</>
 	);
 };

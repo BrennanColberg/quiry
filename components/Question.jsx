@@ -3,9 +3,11 @@ import { useState } from "react";
 import classNames from "classnames";
 import { dbClient, analyticsClient } from "../firebase";
 import { isTimestampToday } from "../utils";
+import useRecentAmount from "../hooks/useRecentAmount";
 
-export default ({ question }) => {
+export default ({ question, i }) => {
 	const [hovered, setHovered] = useState(false);
+	const recentAmount = useRecentAmount();
 
 	async function triggerDelete() {
 		if (confirm(`Are you sure you want to delete "${question.text}"?`)) {
@@ -26,6 +28,9 @@ export default ({ question }) => {
 				[styles.hovered]: hovered,
 				[styles.today]: isTimestampToday(question.created),
 			})}
+			style={{
+				opacity: i ? 1 - (1 / recentAmount) * i : undefined,
+			}}
 			onMouseEnter={() => setHovered(true)}
 			onMouseLeave={() => setHovered(false)}
 		>
