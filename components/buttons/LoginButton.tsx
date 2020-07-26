@@ -30,7 +30,7 @@ export default (): JSX.Element => {
     if (!userSnap.exists) await ref.set({ created: firestore.Timestamp.now() })
 
     // record login
-    analyticsClient.logEvent('login')
+    analyticsClient.logEvent('login', {})
   }
 
   async function triggerLogout() {

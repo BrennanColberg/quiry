@@ -17,16 +17,17 @@ export default (): JSX.Element => {
   }, [])
 
   async function triggerCollectFeedback() {
-    const data = {}
-    data.feedback = prompt('What is your feedback?')
-    data.name = prompt('What is your name?')
-    data.contact = prompt('How can we contact you?')
+    const data = {
+      contact: prompt('How can we contact you?'),
+      created: firestore.Timestamp.now(),
+      feedback: prompt('What is your feedback?'),
+      name: prompt('What is your name?'),
+      userId,
+    }
     Object.keys(data).forEach((key) => {
       if (!data[key]) delete data[key]
     })
     if (Object.keys(data).length > 0) {
-      if (userId) data.userId = userId
-      data.created = firestore.Timestamp.now()
       await dbClient.collection('feedback').doc().set(data)
       analyticsClient.logEvent('submit_feedback')
     }
