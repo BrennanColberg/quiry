@@ -20,15 +20,24 @@ export default () => {
 
 	async function triggerSubmit(event) {
 		event.preventDefault();
-		const oldText = text;
-		setText("");
-		if (!userId) return alert("Please log in to log questions.");
-		if (!oldText.trim()) return alert("Questions must have text!");
-		await dbClient.collection("questions").doc().set({
+
+		const data = {
 			created: firestore.Timestamp.now(),
 			author: userId,
-			text: oldText,
-		});
+			text,
+		};
+
+		// check that the question is substantive, then clear field
+		if (!text.trim()) return alert("Questions must have text!");
+		setText("");
+
+		// create anonymous session if necessary
+		if (!data.author) {
+			const { user } = await authClient.signInAnonymously();
+			data.author = user.uid;
+		}
+
+		await dbClient.collection("questions").doc().set(data);
 		analyticsClient.logEvent("create_question");
 	}
 
