@@ -44,6 +44,7 @@ export default () => {
 	return (
 		<form onSubmit={triggerSubmit} className={styles.form}>
 			<input
+				aria-label="Enter a question"
 				type="text"
 				placeholder={"Why is the earth round?"}
 				value={text}
