@@ -41,7 +41,7 @@ export default (): JSX.Element => {
     await dbClient.collection('questions').doc().set(data)
     await dbClient
       .collection('users')
-      .doc(userId)
+      .doc(data.author)
       .collection('days')
       .doc(getISODate())
       .set({ asked: firestore.FieldValue.increment(1) }, { merge: true })

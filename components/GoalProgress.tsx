@@ -26,6 +26,9 @@ export default (): JSX.Element => {
         setUserId(user.uid)
       } else {
         setUserId(undefined)
+        setCount(0)
+        setGoalIncrement(DEFAULT_GOAL_INCREMENT)
+        setGoalMultiplier(1)
       }
     })
   }, [])
@@ -66,7 +69,7 @@ export default (): JSX.Element => {
   }, [userId, goal])
 
   useEffect(() => {
-    setGoalMultiplier(Math.ceil(count / goalIncrement))
+    setGoalMultiplier(Math.max(Math.ceil(count / goalIncrement), 1))
   }, [count, goalIncrement])
 
   useEffect(() => {
@@ -76,7 +79,7 @@ export default (): JSX.Element => {
   return (
     <div>
       <h2 style={{ textAlign: 'center' }}>
-        You've asked {count} questions today; try for {goal}!
+        You've asked {count} question{count !== 1 && 's'} today; try for {goal}!
       </h2>
       <ProgressBar
         bars={[
