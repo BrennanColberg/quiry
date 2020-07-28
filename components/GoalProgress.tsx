@@ -69,7 +69,7 @@ export default (): JSX.Element => {
   }, [userId, goal])
 
   useEffect(() => {
-    setGoalMultiplier(Math.max(Math.ceil(count / goalIncrement), 1))
+    setGoalMultiplier(Math.ceil((count + 1) / goalIncrement))
   }, [count, goalIncrement])
 
   useEffect(() => {
