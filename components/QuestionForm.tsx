@@ -2,6 +2,7 @@ import styles from '../styles/QuestionForm.module.css'
 import { useState, useEffect } from 'react'
 import { dbClient, authClient, analyticsClient } from '../firebase'
 import { firestore } from 'firebase/app'
+import { getISODate } from '../utils'
 
 export default (): JSX.Element => {
   const [userId, setUserId] = useState(undefined)
@@ -38,6 +39,12 @@ export default (): JSX.Element => {
     }
 
     await dbClient.collection('questions').doc().set(data)
+    await dbClient
+      .collection('users')
+      .doc(userId)
+      .collection('days')
+      .doc(getISODate())
+      .set({ asked: firestore.FieldValue.increment(1) }, { merge: true })
     analyticsClient.logEvent('create_question')
   }
 

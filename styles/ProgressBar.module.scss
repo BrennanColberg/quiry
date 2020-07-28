@@ -1,0 +1,21 @@
+.outer {
+  background-color: lightgray;
+  height: 25px;
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 50px;
+  position: relative;
+}
+
+.inner {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: inherit;
+  position: absolute;
+
+  width: 0%; // variable (set in component)
+  transition-property: width;
+  transition-duration: 1s;
+}

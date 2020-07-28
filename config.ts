@@ -1,1 +1,1 @@
-export const DEFAULT_GOAL = 50;
+export const DEFAULT_GOAL_INCREMENT = 10
