@@ -23,6 +23,16 @@ export default ({
     }
   }
 
+  async function triggerUpdate(text: string) {
+    // if text hasn't been changed, don't do anything
+    if (text === question.text) return
+    const ref = dbClient.collection('questions').doc(question.id)
+    // delete if the question is blank
+    if (text.trim() === '') return await ref.delete()
+    // otherwise just change the text!
+    await ref.update({ text })
+  }
+
   const DeleteButton = () => (
     <span onClick={triggerDelete} className={styles.delete}>
       ❌
@@ -42,7 +52,20 @@ export default ({
       onMouseLeave={() => setHovered(false)}
     >
       <DeleteButton />
-      {question.text}
+      <span
+        contentEditable
+        suppressContentEditableWarning
+        onBlur={(e) => triggerUpdate(e.currentTarget.textContent)}
+        onKeyDown={(e) => {
+          // hitting enter doesn't do anything
+          if (e.keyCode === 13 || e.which === 13) {
+            e.preventDefault()
+            triggerUpdate(e.currentTarget.textContent)
+          }
+        }}
+      >
+        {question.text}
+      </span>
     </li>
   )
 }
