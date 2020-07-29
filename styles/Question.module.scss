@@ -1,17 +1,17 @@
 .question {
-	position: relative;
-	padding: 5px 20px;
+  position: relative;
+  padding: 5px 20px;
 }
 
 .delete {
-	cursor: pointer;
-	position: absolute;
-	left: 0;
-	display: none;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  display: none;
 }
 
 .hovered {
-	.delete {
-		display: initial;
-	}
+  .delete {
+    display: initial;
+  }
 }
