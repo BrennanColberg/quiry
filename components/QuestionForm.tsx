@@ -25,11 +25,11 @@ export default (): JSX.Element => {
     const data = {
       created: firestore.Timestamp.now(),
       author: userId,
-      text,
+      text: text.trim(),
     }
 
     // check that the question is substantive, then clear field
-    if (!text.trim()) return alert('Questions must have text!')
+    if (!data.text) return alert('Questions must have text!')
     setText('')
 
     // create anonymous session if necessary

@@ -28,9 +28,9 @@ export default ({
     if (text === question.text) return
     const ref = dbClient.collection('questions').doc(question.id)
     // delete if the question is blank
-    if (text.trim() === '') return await ref.delete()
+    if (!text.trim()) return await ref.delete()
     // otherwise just change the text!
-    await ref.update({ text })
+    await ref.update({ text: text.trim() })
   }
 
   const DeleteButton = () => (
