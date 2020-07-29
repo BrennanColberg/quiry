@@ -1,4 +1,4 @@
-import styles from '../styles/QuestionHistory.module.css'
+import styles from '../styles/RecentHistory.module.scss'
 import { useEffect, useState } from 'react'
 import { authClient, dbClient } from '../firebase'
 import useRecentAmount from '../hooks/useRecentAmount'
@@ -31,7 +31,7 @@ export default (): JSX.Element => {
           .collection('questions')
           .where('author', '==', userId)
           .orderBy('created', 'desc')
-          .limit(recentAmount)
+          .limit(recentAmount * 2)
           .onSnapshot((snap) =>
             setQuestions(
               snap.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -41,10 +41,12 @@ export default (): JSX.Element => {
   }, [userId, recentAmount])
 
   return (
-    <ul className={styles.list}>
-      {questions.map((question, i) => (
-        <Question question={question} key={i} i={i} />
-      ))}
-    </ul>
+    <div className={styles.recentHistory}>
+      <ul>
+        {questions.map((question, i) => (
+          <Question question={question} key={i} />
+        ))}
+      </ul>
+    </div>
   )
 }
