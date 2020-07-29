@@ -1,9 +1,9 @@
 import useWindowDimensions from './useWindowDimensions'
+import { questionsInDimensions } from '../utils'
 
 export default function useRecentAmount(): number {
   const { height, width } = useWindowDimensions()
-  const compression = Math.max(700 / width, 1)
-  return Math.max(Math.floor((height - 200) / compression / 29), 1)
+  return questionsInDimensions(width, height - 200)
 }
 
 // more height => more questions

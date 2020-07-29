@@ -15,3 +15,8 @@ export function getISODate(): string {
   const dd: string = (d < 10 ? '0' : '') + d
   return `${yyyy}-${mm}-${dd}`
 }
+
+export function questionsInDimensions(width: number, height: number): number {
+  const compression = Math.max(550 / width, 1)
+  return Math.max(Math.floor(height / compression / 29), 0)
+}
