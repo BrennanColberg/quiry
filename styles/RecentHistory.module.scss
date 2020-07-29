@@ -1,11 +1,14 @@
 .recentHistory {
   position: relative;
   height: 100%;
+  width: 100%;
   overflow-x: scroll;
 
   ul {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+    margin: auto;
+    width: 90vw;
+    max-width: 800px;
   }
 }
