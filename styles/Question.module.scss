@@ -1,17 +1,18 @@
 .question {
   position: relative;
   padding: 5px 20px;
-}
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
 
-.delete {
-  cursor: pointer;
-  position: absolute;
-  left: 0;
-  display: none;
-}
-
-.hovered {
   .delete {
+    cursor: pointer;
+    position: absolute;
+    left: -3px;
+    display: none;
+  }
+
+  &:hover .delete {
     display: initial;
   }
 }
