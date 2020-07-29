@@ -13,7 +13,8 @@ export default (): JSX.Element => (
 
     <div className={styles.buttons}>
       <LoginButton />
-      <FeedbackButton />
+      <FeedbackButton text="Report a bug" />
+      <FeedbackButton text="Request a feature" />
     </div>
   </>
 )
