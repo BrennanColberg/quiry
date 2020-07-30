@@ -22,15 +22,26 @@ export default (): JSX.Element => {
   async function triggerSubmit(event) {
     event.preventDefault()
 
+    let question = text,
+      answer = undefined
+
+    const questionMarkIndex = text.lastIndexOf('?')
+    if (questionMarkIndex) {
+      question = text.substr(0, questionMarkIndex + 1)
+      answer = text.substring(questionMarkIndex + 1)
+    }
+
     const data = {
       created: firestore.Timestamp.now(),
       author: userId,
-      text: text.trim(),
+      text: question.trim(),
+      answer: answer.trim(),
     }
 
     // check that the question is substantive, then clear field
     if (!data.text) return alert('Questions must have text!')
     setText('')
+    if (!data.answer) delete data.answer
 
     // create anonymous session if necessary
     if (!data.author) {

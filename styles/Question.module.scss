@@ -16,3 +16,20 @@
     display: initial;
   }
 }
+
+.answer {
+  display: inline-block;
+  color: #888;
+  padding: 5px 30px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+
+  span {
+    &:empty {
+      &::before {
+        content: 'Answer here...';
+        color: #ddd;
+      }
+    }
+  }
+}

@@ -18,5 +18,5 @@ export function getISODate(): string {
 
 export function questionsInDimensions(width: number, height: number): number {
   const compression = Math.max(550 / width, 1)
-  return Math.max(Math.floor(height / compression / 29), 0)
+  return Math.max(Math.floor(height / compression / 50), 0)
 }

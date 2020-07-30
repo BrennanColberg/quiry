@@ -53,7 +53,7 @@ export default (): JSX.Element => {
 
     // at any given time, load an extra two pages' worth of questions
     if (questionsLoaded - questionsSeen < questionsVisible)
-      setQuestionsLoaded(questionsSeen + Math.min(questionsSeen, 200))
+      setQuestionsLoaded(questionsSeen + Math.min(questionsSeen, 50))
   }
 
   return (
