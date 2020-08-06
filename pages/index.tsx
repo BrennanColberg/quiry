@@ -4,9 +4,11 @@ import RecentHistory from '../components/RecentHistory'
 import TodayCounter from '../components/GoalProgress'
 import LoginButton from '../components/buttons/LoginButton'
 import FeedbackButton from '../components/buttons/FeedbackButton'
+import RandomImage from '../components/RandomImage'
 
 export default (): JSX.Element => (
   <>
+    <RandomImage />
     <TodayCounter />
     <QuestionForm />
     <RecentHistory />

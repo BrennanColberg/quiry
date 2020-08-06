@@ -77,19 +77,14 @@ export default (): JSX.Element => {
   }, [goalIncrement, goalMultiplier])
 
   return (
-    <div>
-      <h2 style={{ textAlign: 'center' }}>
-        You've asked {count} question{count !== 1 && 's'} today; try for {goal}!
-      </h2>
-      <ProgressBar
-        bars={[
-          { progress: count / goal, color: 'gray' },
-          {
-            progress: ((goalMultiplier - 1) * goalIncrement) / goal,
-            color: 'chartreuse',
-          },
-        ]}
-      />
-    </div>
+    <ProgressBar
+      bars={[
+        { progress: count / goal, color: 'gray' },
+        {
+          progress: ((goalMultiplier - 1) * goalIncrement) / goal,
+          color: 'chartreuse',
+        },
+      ]}
+    />
   )
 }

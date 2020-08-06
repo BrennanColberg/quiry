@@ -64,7 +64,7 @@ export default (): JSX.Element => {
       <input
         aria-label="Enter a question"
         type="text"
-        placeholder={'Why is the earth round?'}
+        placeholder="Type a question..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
